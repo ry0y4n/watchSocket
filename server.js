@@ -15,7 +15,9 @@ wss.on('connection', (ws) => {
   });
 
 wss.on('message', function incoming(data) {
-    wss.send('something')
+    wss.clients.forEach((client) => {
+        client.send('something');
+    });
 });
 setInterval(() => {
 wss.clients.forEach((client) => {
