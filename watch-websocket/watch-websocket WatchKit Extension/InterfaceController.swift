@@ -14,7 +14,7 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
     
     func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
         print("Web Socket did connect")
-        ping()
+//        ping()
 //        send()
         receive()
     }
@@ -39,7 +39,7 @@ func ping() {
 
 func send() {
     DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-        send()
+//        send()
         webSocketTask.send(.string("New Message")) { error in
           if let error = error {
             print("Error when sending a message \(error)")
@@ -67,15 +67,11 @@ func receive() {
   }
 }
 
+
 class InterfaceController: WKInterfaceController {
     
     @IBAction func buttonTaped() {
-        webSocketTask.send(.string("Hello, this is momosuke")) { error in
-            if let error = error {
-                print("メッセージ送信時にエラーが発生: \(error)")
-            }
-        }
-        print("button tapped")
+        send()
     }
     
     override func awake(withContext context: Any?) {
