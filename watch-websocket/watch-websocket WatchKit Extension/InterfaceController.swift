@@ -70,17 +70,12 @@ func receive() {
 class InterfaceController: WKInterfaceController {
     
     @IBAction func buttonTaped() {
-//        let message = URLSessionWebSocketTask.Message.string("Hello Swift!!!")
-//        webSocketTask.send(message) {error in
-//            if let error = error {
-//                print("websocket couldn't send message because: \(error)")
-//            }
-//        }
         webSocketTask.send(.string("Hello, this is momosuke")) { error in
             if let error = error {
                 print("メッセージ送信時にエラーが発生: \(error)")
             }
         }
+        print("button tapped")
     }
     
     override func awake(withContext context: Any?) {

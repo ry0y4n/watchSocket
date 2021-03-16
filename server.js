@@ -12,15 +12,17 @@ const wss = new Server({ server });
 wss.on('connection', (ws) => {
     console.log('Client connected');
     ws.on('close', () => console.log('Client disconnected'));
-  });
-
-wss.on('message', function incoming(data) {
-    wss.clients.forEach((client) => {
-        client.send('something');
+    ws.on('message', function incoming(data) {
+        wss.clients.forEach(function each(client) {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send('something');
+            }
+        });
     });
 });
+
 setInterval(() => {
-wss.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
-});
+    wss.clients.forEach((client) => {
+        client.send(new Date().toTimeString());
+    });
 }, 1000);
