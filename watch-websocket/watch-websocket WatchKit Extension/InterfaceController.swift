@@ -82,9 +82,8 @@ class InterfaceController: WKInterfaceController {
         let url = URL(string: "wss://morning-citadel-60897.herokuapp.com/")!
         webSocketTask = session.webSocketTask(with: url)
         webSocketTask.resume()
-
     }
-    
+
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
     }
