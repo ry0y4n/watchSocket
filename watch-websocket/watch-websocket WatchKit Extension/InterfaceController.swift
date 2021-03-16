@@ -87,7 +87,8 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         let webSocketDelegate = WebSocket()
         let session = URLSession(configuration: .default, delegate: webSocketDelegate, delegateQueue: OperationQueue())
-        let url = URL(string: "wss://echo.websocket.org")!
+//        let url = URL(string: "wss://echo.websocket.org")!
+        let url = URL(string: "wss://morning-citadel-60897.herokuapp.com/")!
         webSocketTask = session.webSocketTask(with: url)
         webSocketTask.resume()
 
